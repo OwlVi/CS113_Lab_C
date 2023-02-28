@@ -1,63 +1,85 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct List_
-{
+typedef struct List {
     int value;
-    struct list *next;
-}list;
+    struct List *next;
+} node;
 
-list *start = NULL;
-
-void insert (list *node,int value){
-        list *current_node = start;
-        list *previous_node = NULL;
-        while(current_good){
-                previous_node = current_node;
-                current_node = current_node->next;
+void printList(node *pList) {
+    node *current = pList;
+    if (current == NULL){
+        printf("[ ]");
+    }else{
+        printf("[ ");
+        while (current != NULL) {
+            printf("%d ", current->value);
+            current = current->next;
         }
-        if(previous_good != NULL){
-                previous_node->next = node;
-        }else{
-                start = node;
-        }
-}
-
-void delete (){
-
-}
-
-void print (){
-
-}
-
-int main (){
-    char cha[10];
-    int num;
-    list *node;
-    
-    scanf ("%1s %d",cha,&num);
-
-    while(strcmp(cha,"q")){
-        node = (list *)malloc(sizeof(list));
-        scanf ("%1s %d",cha,&num);
-        node->next
-        if (strcmp(cha,"i")){
-            insert()
-        }else if (strcmp(cha,"d"))
-        {
-            delete()
-        }else if (strcmp(cha,"p"))
-        {
-            print()  
-        }
-        
-        
-
-
-
-
+        printf("]");
     }
-        
+    printf("\n");
+}
+
+void insert(node **pList, int value) {
+    node *newNode = (node*) malloc(sizeof(node));
+    newNode->value = value;
+    newNode->next = NULL;
+
+    if (*pList == NULL || value < (*pList)->value) {
+        newNode->next = *pList;
+        *pList = newNode;
+    } else {
+        node *current = *pList;
+        while (current->next != NULL && current->next->value < value) {
+            current = current->next;
+        }
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+}
+
+void delete(node **pList, int value){
+    if (*pList != NULL){
+        node *current = *pList;
+        node *previous = NULL;
+
+        while (current != NULL) {
+            if (current->value == value) {
+                if (previous == NULL) {
+                    *pList = current->next;
+                    free(current);
+                    current = *pList;
+                }else{
+                    previous->next = current->next;
+                    free(current);
+                    current = previous->next;
+                }
+            }else{
+                previous = current;
+                current = current->next;
+            }
+        }
+    }
+}
+
+int main() {
+    int i, n;
+    char c;
+    node *pList=NULL;
+
+    while (c != 'q')
+    {   
+        printf("input> ");
+        scanf(" %c", &c);
+         if (c == 'i') {
+            scanf(" %d", &n);
+            insert(&pList, n);
+        }  else if (c == 'd') {
+            scanf(" %d", &n);
+            delete(&pList, n);
+        }else if (c == 'p') {
+            printList(pList);
+        }
+    }
 }
