@@ -10,7 +10,7 @@ typedef struct _point {
 } point;
 
 // Lab03
-class Circle
+class Circle 
 {
 private:
     point center;
@@ -38,11 +38,28 @@ public:
 // Lab04
 int main()
 {
-    double pt;
-    point center;
+    double radius;
+    point center,pt;
 
-    
+    cout << "Center of Circle: " ;
+    cin >> center.xPosition >> center.yPosition;
+    cout << "Radius of Circle: " ;
+    cin >> radius; 
+    cout << "Point to Check: " ;
+    cin >> pt.xPosition >> pt.yPosition;
+
+    Circle pointCenter(center,radius);
 
 
-
+    cout << "Area of Circle is " << pointCenter.area()
+        <<endl;
+    cout << "Distance from Center to Point ("
+        << pt.xPosition << ", " << pt.yPosition 
+        <<") is " << pointCenter.distanceFromCenter(pt)
+        << endl;
+    if (pointCenter.contains(pt)){
+        cout << "This circle contains this point.";
+    }else{
+        cout << "This point is not in this circle.";
+    }
 }
