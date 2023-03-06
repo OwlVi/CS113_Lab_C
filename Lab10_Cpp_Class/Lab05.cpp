@@ -17,17 +17,17 @@ private:
 public:
     
     Time(int hou_ ,int min_ ,int sec_){
-        this->hour   = hou_;
-        this->minute = min_;
-        this->second = sec_;
+        this->hour   = abs(hou_);
+        this->minute = abs(min_);
+        this->second = abs(sec_);
         this->duration = getDuration();
     }
 
     Time(int dur_){
-        this->hour   = dur_/ 3600;
-        this->minute = (dur_ % 3600) / 60;
-        this->second = dur_ % 60;
-        this->duration = dur_;
+        this->hour   = abs(dur_/ 3600);
+        this->minute = abs((dur_ % 3600) / 60);
+        this->second = abs(dur_ % 60);
+        this->duration = abs(dur_);
     }
 
     int getDuration(){
@@ -77,7 +77,7 @@ public:
 
 int main() {
 
-    Time a(7322),b(1,1,1);
+    Time a(-7322),b(1,1,1);
 
     cout << a.getDuration() << endl;
     cout << b.getDuration() << endl << endl;
