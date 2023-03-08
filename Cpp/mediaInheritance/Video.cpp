@@ -21,7 +21,6 @@ string Video::durationToString() {
 
 string Video::info() {
   stringstream ss;
-  
   ss << infoMedia();
   ss << " " << durationToString();
   return ss.str();
@@ -29,6 +28,7 @@ string Video::info() {
 
 string Video::toScreen() {
   stringstream ss;
+
   ss << "Video " << getTitle() << " is playing ...";
   return ss.str();
 }
