@@ -2,16 +2,13 @@
 #include <string>
 using namespace std;
 
-class MusicPlaylist
-{
+class MusicPlaylist{
 private:
     string track[20];
 public:
     int i = 0;
     int j = 0;
-    MusicPlaylist(){
-        
-    }
+    MusicPlaylist(){}
 
     void add(string Music){
         if (track[i] == "\0"){
@@ -22,15 +19,14 @@ public:
             i++;
         }
     }
-    
+
     void setCurrentTrack(int number){
-        j = number;
+        j = number-1;
     }
 
     string play(){
-        return track[i];
+        return track[j];
     }
-
 };
 
 int main()
