@@ -1,5 +1,10 @@
 *.exe
+
 *.txt
+
+*.o
+
+*.out
 
 /.vscode
 */.vscode

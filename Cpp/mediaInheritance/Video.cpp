@@ -21,17 +21,8 @@ string Video::durationToString() {
 
 string Video::info() {
   stringstream ss;
-  double size = getSizeInGB();
-  string sizeUnit = "GB";
-  if (size < 1) {
-    size = getSizeInMB();
-    sizeUnit = "MB";
-  } 
-  if (size < 1) {
-    size = getSizeInKB();
-    sizeUnit = "KB";
-  }
-  ss << getTitle() << " (" << size << sizeUnit << ")";
+  
+  ss << infoMedia();
   ss << " " << durationToString();
   return ss.str();
 }

@@ -1,4 +1,5 @@
 #include "Media.h"
+#include <sstream>
 using namespace std;
 
 // :: scope resolutio operator
@@ -30,9 +31,10 @@ double Media::getSizeInGB() {
   return getSizeInMB() / 1024.0;
 }
 
-string Media::info(){
-  double size = getSizeInGB();
-  string sizeUnit = "GB";
+string Media::infoMedia(){
+  stringstream str;
+  double size ;
+  string sizeUnit;
   if (size < 1) {
     size = getSizeInMB();
     sizeUnit = "MB";
@@ -41,5 +43,6 @@ string Media::info(){
     size = getSizeInKB();
     sizeUnit = "KB";
   }
-  return size,sizeUnit;
+  str << getTitle() << " (" << size << sizeUnit << ")";
+  return str.str();
 }

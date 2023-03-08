@@ -16,7 +16,7 @@ class Media {
     double getSizeInKB();
     double getSizeInMB();
     double getSizeInGB();
-    string info();
+    string infoMedia();
 };
 
 #endif

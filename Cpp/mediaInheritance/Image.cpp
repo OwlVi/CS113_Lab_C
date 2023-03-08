@@ -21,9 +21,8 @@ int Image::getHeight() {
     
 string Image::info() {
   stringstream ss;
-  string size,sizeUnit ;
-  
-  ss << getTitle() << " (" << size << sizeUnit << ")";
+  ss << infoMedia();
+
   ss << "IMAGE Shape: " << width << "x" << height;
   return ss.str();
 }
