@@ -18,6 +18,9 @@ public:
         this->minute = min_;
         this->second = sec_;
         this->duration = getDuration();
+        if (hour >= 24) {
+            this->hour = this->hour % 24;
+        }
     }
 
     Time(int dur_){
@@ -25,6 +28,9 @@ public:
         this->minute = 0;
         this->second = 0;
         this->duration = dur_;
+        if (hour >= 24) {
+            this->hour = this->hour % 24;
+        }
     }
 
     int getDuration(){

@@ -17,10 +17,13 @@ private:
 public:
     
     Time(int hou_ ,int min_ ,int sec_){
-        this->hour   = abs(hou_);
-        this->minute = abs(min_);
-        this->second = abs(sec_);
+        this->hour   = hou_;
+        this->minute = min_;
+        this->second = sec_;
         this->duration = getDuration();
+        if (hour >= 24) {
+            this->hour = this->hour % 24;
+        }
     }
 
     Time(int dur_){
@@ -28,6 +31,9 @@ public:
         this->minute = abs((dur_ % 3600) / 60);
         this->second = abs(dur_ % 60);
         this->duration = abs(dur_);
+        if (hour >= 24) {
+            this->hour = this->hour % 24;
+        }
     }
 
     int getDuration(){
