@@ -33,4 +33,9 @@ int main() {
   cout << video->getSizeInGB() << endl;
   cout << video->info() << endl;
   cout << video->toScreen() << endl;
+
+  Media* imageMedia = new Image("frame.jpg", 3248303, 12, 7, '<', '>');
+
+  Media* videoMedia = new Video("clip.mp4", 3248303, 24923);
+  
 }
