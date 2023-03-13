@@ -1,41 +1,19 @@
 #include <iostream>
 #include "Media.h"
 #include "Image.h"
-#include "Video.h"
 using namespace std;
 
 int main() {
-  Media *media = new Media("media", 811200000);
-  cout << media->getTitle() << endl;
-  cout << media->getSizeInBytes() << endl;
-  cout << media->getSizeInKB() << endl;
-  cout << media->getSizeInMB() << endl;
-  cout << media->getSizeInGB() << endl;
+  Media *media = new Image("image.jpg", 811200, 15, 10, 'x', 'r');
+  cout << media->info() << endl;
+  cout << "---------" << endl;
+  cout << media->toScreen() << endl;
   cout << "--------------------" << endl;
 
-  Image *image = new Image("hole.jpg", 4304, 11, 8, '{', '}');
-  cout << image->getTitle() << endl;
-  cout << image->getWidth() << endl;
-  cout << image->getHeight() << endl;
-  cout << image->getSizeInBytes() << endl;
-  cout << image->getSizeInKB() << endl;
-  cout << image->getSizeInMB() << endl;
-  cout << image->getSizeInGB() << endl;
+  Image *image = new Image("swap.jpg", 1302, 10, 8, 'o', 'O');
   cout << image->info() << endl;
+  cout << "---------" << endl;
   cout << image->toScreen() << endl;
-  cout << "-----------------------" << endl;
 
-  Video *video = new Video("cat.mp4", 532314442, 8000);
-  cout << video->getTitle() << endl;
-  cout << video->getDuration() << endl;
-  cout << video->durationToString() << endl;
-  cout << video->getSizeInBytes() << endl;
-  cout << video->getSizeInGB() << endl;
-  cout << video->info() << endl;
-  cout << video->toScreen() << endl;
-
-  Media* imageMedia = new Image("frame.jpg", 3248303, 12, 7, '<', '>');
-
-  Media* videoMedia = new Video("clip.mp4", 3248303, 24923);
-  
+  return 0;
 }

@@ -21,14 +21,13 @@ int Image::getHeight() {
     
 string Image::info() {
   stringstream ss;
-  ss << infoMedia();
+  ss << Media::info();
   ss << "IMAGE Shape: " << width << "x" << height;
   return ss.str();
 }
     
 string Image::toScreen() {
   stringstream ss;
-
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
       if ((i + j) % 2)

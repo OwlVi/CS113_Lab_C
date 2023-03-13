@@ -1,15 +1,9 @@
 #include "Media.h"
-#include <sstream>
+#include <sstream> // เพิ่ม library sstream
 using namespace std;
 
-// :: scope resolutio operator
-
 Media::Media(string title, int sizeInBytes)
-    : title(title), sizeInBytes(sizeInBytes) 
-{/*
-        this->title = title
-        this->sizeInBytes = sizeInBytes
-*/}
+    : title(title), sizeInBytes(sizeInBytes) {}
 
 string Media::getTitle() {
   return title;
@@ -31,10 +25,11 @@ double Media::getSizeInGB() {
   return getSizeInMB() / 1024.0;
 }
 
-string Media::infoMedia(){
-  stringstream str;
-  double size ;
-  string sizeUnit;
+// เพิ่ม implementation ของ Media::info()
+string Media::info() {
+  stringstream ss;
+  double size = getSizeInGB();
+  string sizeUnit = "GB";
   if (size < 1) {
     size = getSizeInMB();
     sizeUnit = "MB";
@@ -43,6 +38,6 @@ string Media::infoMedia(){
     size = getSizeInKB();
     sizeUnit = "KB";
   }
-  str << getTitle() << " (" << size << sizeUnit << ")";
-  return str.str();
+  ss << getTitle() << " (" << size << sizeUnit << ")";
+  return ss.str();
 }

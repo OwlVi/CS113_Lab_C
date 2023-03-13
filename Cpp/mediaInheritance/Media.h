@@ -1,4 +1,4 @@
-#ifndef MEDIA_H // include guard
+#ifndef MEDIA_H
 #define MEDIA_H
 
 #include <iostream>
@@ -16,7 +16,9 @@ class Media {
     double getSizeInKB();
     double getSizeInMB();
     double getSizeInGB();
-    string infoMedia();
+		// เพิ่ม virtual function และ pure virtual function
+    virtual string info(); 
+    virtual string toScreen() = 0;
 };
 
 #endif
