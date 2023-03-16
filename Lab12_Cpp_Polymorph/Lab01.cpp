@@ -6,17 +6,9 @@ using namespace std;
 class Shape3D
 {
 public:
-      virtual double volumn();
-      virtual double surfaceArea();
+      virtual double volumn() = 0;
+      virtual double surfaceArea() = 0;
 };
-
-double Shape3D::volumn(){
-	return 0;
-}
-
-double Shape3D::surfaceArea(){
-	return 0;
-}
 
 class RightRectangularPyramid : public Shape3D{
 private:
