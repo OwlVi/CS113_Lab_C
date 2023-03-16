@@ -35,19 +35,17 @@ void Animal::eat(int food){
         }
         this->fullness  += 1;
     }
-    limitStat();
 }
 
 void Animal::play(int hour){
     for (int i = hour ; i > 0;i--){
-    if (fullness == 0 || energy == 0){
-        return;}
-    this->energy -= hour*10;
-    this->fullness -= hour*20;
-    this->happiness += hour*5;
-    limitStat();}
+        limitStat();
+        if (fullness == 0 || energy == 0){return;}
+        this->energy -= hour*10;
+        this->fullness -= hour*20;
+        this->happiness += hour*5;
+    }
 }
-
 
 void Animal::sleep(int hour){
     for (int i = 1 ; i <= hour ; i++){
@@ -55,7 +53,7 @@ void Animal::sleep(int hour){
         this->energy += 10;
         this->fullness -= 10;
     }
-    limitStat();
+
 }
 
 void Animal::limitStat(){
