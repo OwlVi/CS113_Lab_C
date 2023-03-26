@@ -1,3 +1,5 @@
+// Ex composition ( has a )
+
 #include <iostream>
 using namespace std;
 
