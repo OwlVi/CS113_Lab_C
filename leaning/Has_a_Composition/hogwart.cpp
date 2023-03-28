@@ -35,7 +35,7 @@ string Gear::getName(){
 }
 string Gear::toString(){
       stringstream ss;
-      ss << name << " Offenase: " << offense << " DEfense: " << defense << endl;
+      ss << name << " Offenase: " << offense << " Defense: " << defense << endl;
       return ss.str();
 }
 
@@ -95,9 +95,18 @@ void Player::addGear(Gear *gear){
                   this->defense += equipment[i]->getDefense();
                   break;
             }
-            
       }
+      
+      if (equipment[5] != nullptr){
+            for (int i = 0; i < 5; i++) {
+                  for (int j = 0; j < 5 - i; j++) {
+                        if (equipment[j] && equipment[j + 1] && equipment[j]->getOffense() > equipment[j + 1]->getOffense()) {
+                              swap(equipment[j], equipment[j + 1]);
+                        }
+                  }
+            }
 
+      }
 }
 
 void Player::showGear(){
@@ -116,16 +125,25 @@ int main(){
       inorin->addGear(new Gear("scarf",15,10));
       inorin->addGear(new Gear("foot",30,20));
       inorin->addGear(new Gear("cloth",20,10));
-      inorin->addGear(new Gear("leg",40,30));
+      inorin->addGear(new Gear("leg",5,30));
 
-      cout << inorin->getOffense() << " " << inorin->getDefense() << endl;
+      cout << "Stats Play : " << endl;
+      cout << "Offense: " << inorin->getOffense() << endl << "Defense: " << inorin->getDefense() << endl
+      << endl;
 
       inorin->addGear(new Gear("A",12,28));
 
-      cout << inorin->getOffense() << " " << inorin->getDefense() << endl;
+      cout << "Stats Play : " << endl;
+      cout << "Offense: " << inorin->getOffense() << endl << "Defense: " << inorin->getDefense() << endl 
+      << endl;
 
-      inorin->addGear(new Gear("B",12,30));
+      inorin->addGear(new Gear("B",15,30));
 
-      cout << inorin->getOffense() << " " << inorin->getDefense() << endl;
+      cout << "Stats Play : " << endl;
+      cout << "Offense: " << inorin->getOffense() << endl << "Defense: " << inorin->getDefense() << endl
+      << endl;
+      
+      
+      inorin->showGear();
 
 }
